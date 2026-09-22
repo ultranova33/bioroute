@@ -1,0 +1,17 @@
+{
+  "event": "DYNAMIC_FEFO_REROUTE_DISCOUNT",
+  "batch_id": "BATCH-2025-VIT-BIO-8834",
+  "merchant_integration": "Swiggy / Zomato Hyperlocal Perishable API",
+  "timestamp": "2025-09-22T22:45:00Z",
+  "cargo_type": "Fresh Produce / Perishable Biologics",
+  "origin_hub": "Chennai Cold Warehouse",
+  "original_destination": "Koyambedu Mandi Chennai (ETA 6.0 hrs)",
+  "diverted_destination": "Ranipet Processing Plant (ETA 2.0 hrs)",
+  "calculated_rsl_hours": 4.85,
+  "fefo_discount_percentage": 30.0,
+  "risk_classification": "CRITICAL",
+  "verification": {
+    "algorithm": "SHA-256",
+    "hash": "a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e"
+  }
+}
