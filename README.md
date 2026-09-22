@@ -1,13 +1,13 @@
-# Bioroute Engine 🧬
-> **Perishable Risk & Dynamic Rerouting Engine**  
-> *VIT Chennai | Review II Functional Prototype (35%+ Completion)*
+# Bioroute 🧬🌱
+> **Perishable Risk & Dynamic Rerouting Platform**  
+> *VIT Chennai | University Enterprise Platform Project*
 
 ---
 
 ## 📌 Project Overview
-**Bioroute** is an intelligent cold-chain logistics system that dynamically monitors perishable cargo spoilage risk using **Arrhenius decay kinetics** and executes real-time spatial graph rerouting using the **A* Shortest Path algorithm**. 
+**Bioroute** is an enterprise-grade cold-chain logistics platform that dynamically predicts perishable cargo spoilage risk using **Arrhenius decay kinetics**, **OpenCV Computer Vision surface degradation analysis**, and **PostGIS spatial network search**.
 
-When environmental sensors (temperature, humidity, ethylene, ammonia) detect thermal or gas stress, Bioroute recalculates the **Remaining Shelf Life (RSL)**. If RSL drops below the transit time required for the primary destination, the engine automatically diverts cargo to secondary processing outlets and emits dynamic **FEFO (First-Expired, First-Out)** discount webhooks for integration with platforms like Swiggy and Zomato.
+When environmental sensors (temperature, humidity, ethylene, ammonia) or camera frames detect thermal, gas, or visual degradation, Bioroute recalculates the **Remaining Shelf Life (RSL)**. If RSL falls below travel ETA to the primary destination, the platform automatically diverts cargo to secondary processing facilities, alerts drivers in their regional language via voice TTS, and dispatches dynamic **FEFO (First-Expired, First-Out)** discount webhooks, staff meal auto-earmarking, or food recovery NGO pick-up alerts.
 
 ---
 
@@ -21,86 +21,96 @@ When environmental sensors (temperature, humidity, ethylene, ammonia) detect the
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ System Architecture & Platform Ecosystem
 ```
-                                ┌────────────────────────────────┐
-                                │   Live Environmental Sensors   │
-                                │ (Temp, RH, Ethylene, Ammonia)  │
-                                └───────────────┬────────────────┘
-                                                │
-                                                ▼
-                                ┌────────────────────────────────┐
-                                │    Arrhenius Kinetics Engine   │
-                                │   k = A * exp(-Ea / (R * T))   │
-                                └───────────────┬────────────────┘
-                                                │
-                                                ▼
-                                ┌────────────────────────────────┐
-                                │ Dynamic RSL Calculation (Hrs)  │
-                                └───────────────┬────────────────┘
-                                                │
-                    ┌───────────────────────────┴───────────────────────────┐
-                    │                                                       │
-           RSL >= 6.0 Hours                                        RSL < 6.0 Hours
-                    │                                                       │
-                    ▼                                                       ▼
-  ┌───────────────────────────────────┐                  ┌───────────────────────────────────┐
-  │      Maintain Primary Path        │                  │   Execute A* Rerouting Engine     │
-  │     (Koyambedu Mandi Chennai)     │                  │    (Ranipet Processing Plant)     │
-  └───────────────────────────────────┘                  └──────────────────┬────────────────┘
-                                                                            │
-                                                                            ▼
-                                                         ┌───────────────────────────────────┐
-                                                         │   Swiggy/Zomato Webhook Dispatch  │
-                                                         │    (30% Dynamic FEFO Discount)    │
-                                                         │     SHA-256 Crypto Verification   │
-                                                         └───────────────────────────────────┘
+                                ┌──────────────────────────────────────┐
+                                │   Environmental & Camera Telemetry   │
+                                │ (Temp, RH, Ethylene, Ammonia, CV)    │
+                                └──────────────────┬───────────────────┘
+                                                   │
+                                                   ▼
+                                ┌──────────────────────────────────────┐
+                                │ OpenCV Vision + Arrhenius Fusion     │
+                                │    RSL_fused = Base_RSL / P_rot      │
+                                └──────────────────┬───────────────────┘
+                                                   │
+                                                   ▼
+                                ┌──────────────────────────────────────┐
+                                │  FastAPI / PostGIS Microservice      │
+                                │ ST_DWithin Highway Spatial Rerouting │
+                                └──────────────────┬───────────────────┘
+                                                   │
+                ┌──────────────────────────────────┼──────────────────────────────────┐
+                │                                  │                                  │
+                ▼                                  ▼                                  ▼
+┌───────────────────────────────┐  ┌───────────────────────────────┐  ┌───────────────────────────────┐
+│ Dual-Dashboard Web Portal     │  │ Swiggy / Zomato FEFO Webhook  │  │ Localized Flutter Driver App  │
+│ - Cloud Kitchen Admin         │  │ - 30% Dynamic FEFO Markdown   │  │ - Multi-Language (TN, KL, AP, │
+│ - Staff Meals Auto-Earmark    │  │ - Staff Meals Auto-Allocation │  │   KA, HI, EN)                │
+│ - Food Recovery NGO Dispatch  │  │ - Food Recovery NGO Alert     │  │ - Voice TTS Navigation        │
+│ - Truck Fleet Telematics      │  │ - SHA-256 Audit Certificate   │  │ - Offline SQLite Darkzone     │
+└───────────────────────────────┘  └───────────────────────────────┘  └───────────────────────────────┘
 ```
 
 ---
 
-## 🧪 Arrhenius Decay Kinetics Equation
-The reaction rate constant $k$ for chemical and biological degradation is modeled via:
-$$k = A \cdot \exp\left( -\frac{E_a}{R \cdot T} \right)$$
-
-Relative decay acceleration relative to reference baseline temperature $T_{\text{ref}} = 4.0^\circ\text{C}$ (277.15 K):
-$$\text{Thermal Acceleration} = \exp\left( \frac{E_a}{R} \left( \frac{1}{T_{\text{ref}}} - \frac{1}{T} \right) \right)$$
-
-- $E_a = 52,000\text{ J/mol}$ (Activation Energy for perishable produce)
-- $R = 8.314\text{ J/(mol}\cdot\text{K)}$ (Universal Gas Constant)
-- Gas Stress Multipliers: Ethylene ($>5\text{ ppm}$) and Ammonia ($>10\text{ ppm}$) accelerate $k$.
-- Dynamic RSL equation:
-$$\text{RSL (Hours)} = \frac{\text{Baseline Shelf Life (24.0 Hours)}}{\text{Decay Index}}$$
+## 📂 Repository Structure
+```
+bioroute/
+├── README.md                      # Documentation & System Architecture
+├── requirements.txt                # Python backend & ML dependencies
+├── app.py                          # Streamlit Master Review Prototype
+├── engine/
+│   ├── arrhenius.py               # Arrhenius decay kinetics calculations
+│   └── routing.py                 # NetworkX spatial graph & A* rerouting
+├── backend/                       # FastAPI & PostGIS Microservices
+│   ├── main.py                    # Asynchronous FastAPI app & WebSockets
+│   ├── database.py                # PostGIS spatial query logic
+│   ├── models/telemetry.py        # Telematics & Chiller domain models
+│   └── routes/                    # Spatial Routing & FEFO Webhook APIs
+├── cv_engine/                     # Computer Vision Spoilage Inference
+│   ├── detector.py                # OpenCV produce discoloration analysis
+│   └── test_pipeline.py           # CV pipeline test bench
+├── dashboard/                     # Executive Dual-Dashboard Web Portal
+│   ├── index.html                 # Dark Forest Green Dual Portal Interface
+│   ├── package.json               # Next.js dependencies
+│   └── src/DualDashboard.jsx      # React dual-dashboard component
+└── mobile_app/                    # Localized Flutter Driver Navigation App
+    ├── pubspec.yaml               # Flutter package configuration
+    ├── lib/main.dart              # Multi-language TTS & map navigation
+    ├── lib/l10n/                  # Localizations (TN, KL, AP, KA, HI, EN)
+    └── lib/services/              # SQLite offline darkzone storage
+```
 
 ---
 
-## 🚀 Getting Started & Execution
+## 🚀 Execution & Deployment Guides
 
-### 1. Prerequisites Installation
-Install dependencies via `requirements.txt`:
+### 1. Backend Dependencies Installation
 ```bash
 pip install -r requirements.txt
 ```
-*(Or `pip install streamlit pandas numpy networkx matplotlib requests pydantic`)*
 
-### 2. Launch Streamlit Master Review Interface
-Run the application locally:
+### 2. Launch FastAPI Microservice Server
 ```bash
-streamlit run app.py
+python -m uvicorn backend.main:app --port 8000
+```
+* **API Documentation**: [http://localhost:8000/docs](http://localhost:8000/docs)
+* **WebSocket Stream**: `ws://localhost:8000/ws/telemetry`
+
+### 3. Launch Dual-Dashboard Web Portal
+```bash
+python -m http.server 8080 --directory dashboard
+```
+* **Web Portal URL**: [http://localhost:8080](http://localhost:8080)
+
+### 4. Run Computer Vision Pipeline Test
+```bash
+python -m cv_engine.test_pipeline
 ```
 
----
-
-## 📁 Repository Structure
-```
-bioroute/
-├── README.md                 # Documentation & System Architecture
-├── requirements.txt           # Dependency requirements
-├── app.py                     # Streamlit Master Review Dashboard Interface
-├── engine/
-│   ├── __init__.py            # Engine module package marker
-│   ├── arrhenius.py           # Arrhenius decay kinetics calculations
-│   └── routing.py             # NetworkX spatial graph & A* rerouting
-└── assets/
-    └── sample_payload.json    # Sample Swiggy/Zomato webhook JSON payload
+### 5. Launch Localized Flutter Driver App
+```bash
+cd mobile_app
+flutter run
 ```

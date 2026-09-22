@@ -1,0 +1,14 @@
+{
+  "app_title": "Bioroute Driver Navigation",
+  "cargo_status": "Cargo Status",
+  "safe": "SAFE",
+  "warning": "WARNING",
+  "critical": "CRITICAL SPOILAGE RISK",
+  "primary_route": "Primary Route: Koyambedu Mandi Chennai",
+  "diverted_route": "Diverted Route: Ranipet Processing Plant",
+  "reroute_alert_title": "🚨 DYNAMIC REROUTE ALERT!",
+  "reroute_alert_message": "Warning! Cargo quality is degrading. Dynamic A* Reroute initiated -> Diverting to Ranipet Processing Plant.",
+  "confirm_reroute": "Accept Reroute Navigation",
+  "offline_sync": "4G/5G Darkzone: Telemetry Cached Locally",
+  "voice_alert_text": "Warning! Cargo quality is degrading. Dynamic path rerouted to Ranipet Processing Facility."
+}
