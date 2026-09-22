@@ -279,7 +279,7 @@ with col3:
         ('B', 'C'): '2h',
         ('A', 'C'): '4h'
     }
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, ax=ax, font_color="#9CA3AF", font_size=8, bg="none")
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, ax=ax, font_color="#9CA3AF", font_size=8, bbox=dict(boxstyle='round,pad=0.2', fc='#0E1117', ec='none'))
 
     ax.set_xlim(-0.8, 6.5)
     ax.set_ylim(-0.2, 4.0)
